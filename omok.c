@@ -29,31 +29,31 @@ int main(void)
 		winner = 0,
 		now_turn = BLACK;
 
-	//rand ½Ãµå ÃÊ±âÈ­
+	//rand ì‹œë“œ ì´ˆê¸°í™”
 	srand((unsigned) time(0));
 
-	//ÄÜ¼Ö ¹è°æÀ» ÆÄ¶õ»ö, ±Û¾¾¸¦ Èò»öÀ¸·Î º¯°æÇÑ´Ù.
+	//ì½˜ì†” ë°°ê²½ì„ íŒŒëž€ìƒ‰, ê¸€ì”¨ë¥¼ í°ìƒ‰ìœ¼ë¡œ ë³€ê²½í•œë‹¤.
 	system("color 9f");
 
-	//¸ÞÀÎ È­¸éÀ» Ãâ·ÂÇÑ´Ù.
+	//ë©”ì¸ í™”ë©´ì„ ì¶œë ¥í•œë‹¤.
 	display_welcome();
 
-	//»ç¿ëÀÚ¿¡°Ô µ¹ »ö±òÀ» ¼±ÅÃÇÏµµ·Ï ÇÔ.
+	//ì‚¬ìš©ìžì—ê²Œ ëŒ ìƒ‰ê¹”ì„ ì„ íƒí•˜ë„ë¡ í•¨.
 	while (1) {
-		printf("Èæµ¹°ú ¹éµ¹ Áß ¹«¾ùÀ¸·Î ÇÏ½Ã°Ú½À´Ï±î?(Èæ:%d, ¹é:%d) ", BLACK, WHITE);
+		printf("í‘ëŒê³¼ ë°±ëŒ ì¤‘ ë¬´ì—‡ìœ¼ë¡œ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?(í‘:%d, ë°±:%d) ", BLACK, WHITE);
 		scanf("%d", &user_stone_color);
 		if (user_stone_color == BLACK || user_stone_color == WHITE)
 			break;
-		printf("À¯È¿ÇÑ °ªÀÌ ¾Æ´Õ´Ï´Ù. ´Ù½Ã ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.\n");
+		printf("ìœ íš¨í•œ ê°’ì´ ì•„ë‹™ë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.\n");
 	}
 
-	//µ¹ »öÀ» ¾È³»ÇÏ°í 3ÃÊ ´ë±âÇÏ±â.
+	//ëŒ ìƒ‰ì„ ì•ˆë‚´í•˜ê³  3ì´ˆ ëŒ€ê¸°í•˜ê¸°.
 	if (user_stone_color == BLACK) {
-		printf("3ÃÊÈÄ Èæµ¹·Î °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù...");
+		printf("3ì´ˆí›„ í‘ëŒë¡œ ê²Œìž„ì„ ì‹œìž‘í•©ë‹ˆë‹¤...");
 		ai_stone_color = WHITE;
 
 	} else {
-		printf("3ÃÊÈÄ ¹éµ¹·Î °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù...");
+		printf("3ì´ˆí›„ ë°±ëŒë¡œ ê²Œìž„ì„ ì‹œìž‘í•©ë‹ˆë‹¤...");
 		ai_stone_color = BLACK;
 	}
 	for (int i = 0; i < 3; i++)
@@ -63,26 +63,26 @@ int main(void)
 		Sleep(500);
 	}
 
-	//ÄÜ¼Ö ¹è°æÀ» Èò»ö, ±Û¾¾¸¦ °ËÀº»öÀ¸·Î º¯°æÇÑ´Ù.
+	//ì½˜ì†” ë°°ê²½ì„ í°ìƒ‰, ê¸€ì”¨ë¥¼ ê²€ì€ìƒ‰ìœ¼ë¡œ ë³€ê²½í•œë‹¤.
 	system("color f0");
 
 	while (1) {
-		//È­¸é Áö¿ì±â (ÀÌ¹Ì Ãâ·ÂµÆ´ø ¸ÞÀÎÈ­¸é Áö¿ì±â)
+		//í™”ë©´ ì§€ìš°ê¸° (ì´ë¯¸ ì¶œë ¥ëë˜ ë©”ì¸í™”ë©´ ì§€ìš°ê¸°)
 		system("cls");
 
-		//¿À¸ñÆÇ ±×·Á³»±â
+		//ì˜¤ëª©íŒ ê·¸ë ¤ë‚´ê¸°
 		draw_board();
 
-		//¿À¸ñÀÌ ¿Ï¼ºµÇ¾ú´ÂÁö Ã¼Å©ÇÑ´Ù.
+		//ì˜¤ëª©ì´ ì™„ì„±ë˜ì—ˆëŠ”ì§€ ì²´í¬í•œë‹¤.
 		if (winner = check_omok()) {
 			print_congratulation_msg(winner);
 			return 0;
 		}
 
-		//»ç¿ëÀÚ¿¡°Ô µ¹ÀÇ À§Ä¡ ¹Þ¾Æ³»±â
-		//if (now_turn == user_stone_color)
-			//scan_stone_position(now_turn, &x, &y);
-		//else
+		//ì‚¬ìš©ìžì—ê²Œ ëŒì˜ ìœ„ì¹˜ ë°›ì•„ë‚´ê¸°
+		if (now_turn == user_stone_color)
+			scan_stone_position(now_turn, &x, &y);
+		else
 			AI_get_stone_position(now_turn, &x, &y);
 		
 		set_stone(now_turn, x, y);
@@ -98,20 +98,20 @@ int main(void)
 	return 0;
 }
 
-//¸ÞÀÎÈ­¸é Ãâ·Â
+//ë©”ì¸í™”ë©´ ì¶œë ¥
 void display_welcome(void) 
 {
 	int i;
 	for (i = 0; i < 40; i++) printf("*");
 	puts("\n");
 	for (i = 0; i < 10; i++) printf(" ");
-	printf("¿À¸ñ\n\n");
+	printf("ì˜¤ëª©\n\n");
 	for (i = 0; i < 40; i++) printf("*");
-	printf("\n\n!ÀüÃ¼È­¸éÀ¸·Î ½ÇÇàÇÏ¼¼¿ä!\n");
-	printf("¾Æ¹« Å°³ª ´­·¯ ½ÃÀÛ...\n");
+	printf("\n\n!ì „ì²´í™”ë©´ìœ¼ë¡œ ì‹¤í–‰í•˜ì„¸ìš”!\n");
+	printf("ì•„ë¬´ í‚¤ë‚˜ ëˆŒëŸ¬ ì‹œìž‘...\n");
 }
 
-//¿À¸ñÆÇ Ãâ·Â
+//ì˜¤ëª©íŒ ì¶œë ¥
 void draw_board(void) 
 {
 	int i, row, col;
@@ -127,8 +127,8 @@ void draw_board(void)
 		for (col = 0; col < 15; col++) {
 			switch (board[row][col]) {
 			case EMPTY: printf("    "); break;
-			case WHITE: printf(" ¡Û "); break;
-			case BLACK: printf(" ¡Ü "); break;
+			case WHITE: printf(" â—‹ "); break;
+			case BLACK: printf(" â— "); break;
 			}
 			printf("|");
 		}
@@ -136,7 +136,7 @@ void draw_board(void)
 	puts("\n");
 }
 
-//¿À¸ñ Ã¼Å©
+//ì˜¤ëª© ì²´í¬
 int check_omok(void) 
 {
 	int row, col, i, k, winner;
@@ -159,7 +159,7 @@ int check_omok(void)
 	return 0;
 }
 
-//½Â¸® ÃàÇÏ ¸Þ½ÃÁö Ãâ·Â
+//ìŠ¹ë¦¬ ì¶•í•˜ ë©”ì‹œì§€ ì¶œë ¥
 void print_congratulation_msg(int winner) 
 {
 	int i;
@@ -167,35 +167,35 @@ void print_congratulation_msg(int winner)
 	for (i = 0; i < 80; i++) printf("*");
 	puts("");
 	for (i = 0; i < 20; i++) printf(" ");
-	printf("ÃàÇÏÇÕ´Ï´Ù!!! ");
+	printf("ì¶•í•˜í•©ë‹ˆë‹¤!!! ");
 
 	if (winner == BLACK)
-		printf("Èæ");
+		printf("í‘");
 	else
-		printf("¹é");
+		printf("ë°±");
 
-	printf("µ¹ÀÇ ½Â¸®ÀÔ´Ï´Ù!!!");
+	printf("ëŒì˜ ìŠ¹ë¦¬ìž…ë‹ˆë‹¤!!!");
 	puts("");
 	for (i = 0; i < 80; i++) printf("*");
 	puts("\n\n");
 }
 
-//ÇØ´ç ÁÂÇ¥¿¡ µ¹À» ³õÀ½.
+//í•´ë‹¹ ì¢Œí‘œì— ëŒì„ ë†“ìŒ.
 void set_stone(int now_turn, int x, int y)
 {
 	board[x][y] = now_turn;
 }
 
-//»ç¿ëÀÚ¿¡°Ô ÀÔ·ÂÀ» µ¹ À§Ä¡ ÀÔ·ÂÀ» ¿ä±¸.
+//ì‚¬ìš©ìžì—ê²Œ ìž…ë ¥ì„ ëŒ ìœ„ì¹˜ ìž…ë ¥ì„ ìš”êµ¬.
 void scan_stone_position(int now_turn, int * x, int * y) 
 {
 	while (1) {
-		if (now_turn == BLACK) printf("Èæ");
-		else printf("¹é");
-		printf("µ¹ÀÇ Â÷·ÊÀÔ´Ï´Ù. µ¹À» ³õ°í ½ÍÀº À§Ä¡ÀÇ ÁÂÇ¥¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À. (¿¹: 8 9) ");
+		if (now_turn == BLACK) printf("í‘");
+		else printf("ë°±");
+		printf("ëŒì˜ ì°¨ë¡€ìž…ë‹ˆë‹¤. ëŒì„ ë†“ê³  ì‹¶ì€ ìœ„ì¹˜ì˜ ì¢Œí‘œë¥¼ ìž…ë ¥í•´ì£¼ì‹­ì‹œì˜¤. (ì˜ˆ: 8 9) ");
 		scanf("%d %d", x, y);
 		if (*x > 15 || *x < 1 || *y > 15 || *y < 1) {
-			printf("À¯È¿ÇÑ ¼ýÀÚ°¡ ¾Æ´Õ´Ï´Ù. ÁÂÇ¥ÀÇ °ªÀº 1~15 »çÀÌÀÇ ÀÚ¿¬¼öÀÌ¿©¾ß ÇÕ´Ï´Ù.\n");
+			printf("ìœ íš¨í•œ ìˆ«ìžê°€ ì•„ë‹™ë‹ˆë‹¤. ì¢Œí‘œì˜ ê°’ì€ 1~15 ì‚¬ì´ì˜ ìžì—°ìˆ˜ì´ì—¬ì•¼ í•©ë‹ˆë‹¤.\n");
 			continue;
 		}
 
@@ -203,7 +203,7 @@ void scan_stone_position(int now_turn, int * x, int * y)
 		--*y;
 
 		if (board[*x][*y]) {
-			printf("ÀÌ¹Ì ±×°÷¿¡´Â µ¹ÀÌ ³õ¿©ÀÖ½À´Ï´Ù. ´Ù¸¥ ÁÂÇ¥¸¦ ÀÔ·ÂÇØÁÖ½Ê½Ã¿À.\n");
+			printf("ì´ë¯¸ ê·¸ê³³ì—ëŠ” ëŒì´ ë†“ì—¬ìžˆìŠµë‹ˆë‹¤. ë‹¤ë¥¸ ì¢Œí‘œë¥¼ ìž…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.\n");
 			continue;
 		}
 
@@ -212,7 +212,7 @@ void scan_stone_position(int now_turn, int * x, int * y)
 }
 
 
-//¾Ë°í¸®Áò¿¡ ÀÇÇØ µ¹À» ³õÀ» °÷À» ¼±ÅÃ.
+//ì•Œê³ ë¦¬ì¦˜ì— ì˜í•´ ëŒì„ ë†“ì„ ê³³ì„ ì„ íƒ.
 void AI_get_stone_position(int now_turn, int * x, int * y)
 {
 	int priority[15][15] = { 0, };
@@ -224,7 +224,7 @@ void AI_get_stone_position(int now_turn, int * x, int * y)
 		rand_key,
 		row, col;
 
-	//ÀÌ¹Ì µ¹ÀÌ ÀÖ´Â °÷ÀÇ ¿ì¼±µµ¸¦ ÃÖÇÏ·Î.
+	//ì´ë¯¸ ëŒì´ ìžˆëŠ” ê³³ì˜ ìš°ì„ ë„ë¥¼ ìµœí•˜ë¡œ.
 	for (row = 0; row < 15; row++)
 		for (col = 0; col < 15; col++)
 			if (board[row][col])
@@ -233,12 +233,12 @@ void AI_get_stone_position(int now_turn, int * x, int * y)
 				priority[row][col] = INT_MIN;
 			}
 	
-	//¿À¸ñÆÇ¿¡ µ¹ÀÌ 2°³ ¹Ì¸¸ÀÏ °æ¿ì, 
-	//¹ÙµÏÆÇ Áß¾ÓÀÇ ¿ì¼±µµ¸¦ 10000¸¸Å­ Ãß°¡.
+	//ì˜¤ëª©íŒì— ëŒì´ 2ê°œ ë¯¸ë§Œì¼ ê²½ìš°, 
+	//ë°”ë‘‘íŒ ì¤‘ì•™ì˜ ìš°ì„ ë„ë¥¼ 10000ë§Œí¼ ì¶”ê°€.
 	if (stone_amount < 2)
 		priority[7][7] += 10000;
 
-	//ÀÌ¹Ì ³õ¿©Áø µ¹µéÀÇ 8¹æÇâÀÇ ¿ì¼±µµ¸¦ 1¸¸Å­ Ãß°¡.
+	//ì´ë¯¸ ë†“ì—¬ì§„ ëŒë“¤ì˜ 8ë°©í–¥ì˜ ìš°ì„ ë„ë¥¼ 1ë§Œí¼ ì¶”ê°€.
 	for (row = 0; row < 15; row++)
 		for (col = 0; col < 15; col++)
 			if (board[row][col])
@@ -264,7 +264,7 @@ void AI_get_stone_position(int now_turn, int * x, int * y)
 					priority[col - 1][row + 1]++;
 			}
 
-	//¿ì¼±µµ°¡ °¡Àå ³ôÀº °ÍµéÀ» Ã£¾Æ ¹è¿­¿¡ »ðÀÔ.
+	//ìš°ì„ ë„ê°€ ê°€ìž¥ ë†’ì€ ê²ƒë“¤ì„ ì°¾ì•„ ë°°ì—´ì— ì‚½ìž….
 	for (row = 0; row < 15; row++)
 		for (col = 0; col < 15; col++) {
 			if (max_val < priority[row][col]) {
