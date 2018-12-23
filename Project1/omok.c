@@ -1,4 +1,4 @@
-// 나는 김효빈이다.
+// 나는 이윤석이다.
 #define _CRT_SECURE_NO_WARNINGS
 #define EMPTY 0
 #define BLACK 1
