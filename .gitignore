@@ -1,1 +1,12 @@
 *.DS_Store
+*.suo
+*.db
+*.ipch
+*.obj
+*.log
+*.tlog
+*.lastbuildstate
+*.idb
+*.pdb
+*.exe
+*.ilk
