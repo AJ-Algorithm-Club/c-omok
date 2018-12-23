@@ -1,4 +1,4 @@
-// 나는 이경익이다. (2018.12.23 PM 3:45)
+// 나는 김효빈이다.
 #define _CRT_SECURE_NO_WARNINGS
 #define EMPTY 0
 #define BLACK 1
